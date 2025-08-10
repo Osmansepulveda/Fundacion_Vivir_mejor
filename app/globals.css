@@ -9,19 +9,19 @@
   --card-foreground: 240 10% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
-  --primary: 190 100% 45%; /* Vibrant Cyan/Teal */
+  --primary: 190 100% 55%; /* Adjusted to match rgba(44,190,234,1) more closely */
   --primary-foreground: 0 0% 100%;
   --secondary: 240 4.8% 95.9%;
   --secondary-foreground: 240 5.9% 10%;
   --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
+  --muted-foreground: 240 5% 35%; /* Made slightly darker for better readability */
   --accent: 240 4.8% 95.9%;
   --accent-foreground: 240 5.9% 10%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
-  --ring: 190 100% 45%; /* Ring color matches primary */
+  --ring: 190 100% 55%; /* Ring color matches primary */
 
   /* Tailwind Typography colors for light mode */
   --tw-prose-body: hsl(var(--foreground));
@@ -49,7 +49,7 @@
   --card-foreground: 0 0% 98%;
   --popover: 240 10% 3.9%;
   --popover-foreground: 0 0% 98%;
-  --primary: 190 100% 45%; /* Vibrant Cyan/Teal */
+  --primary: 190 100% 55%; /* Vibrant Cyan/Teal */
   --primary-foreground: 0 0% 100%;
   --secondary: 240 3.7% 15.9%;
   --secondary-foreground: 0 0% 98%;
@@ -61,7 +61,7 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --ring: 190 100% 45%; /* Ring color matches primary */
+  --ring: 190 100% 55%; /* Ring color matches primary */
 
   /* Tailwind Typography colors for dark mode */
   --tw-prose-body: hsl(var(--foreground));

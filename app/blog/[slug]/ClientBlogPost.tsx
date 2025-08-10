@@ -179,7 +179,7 @@ export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }
           </div>
 
           <article className="prose prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="text-slate-600" dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
 
           <div className="border-t border-border mt-12 pt-8">
