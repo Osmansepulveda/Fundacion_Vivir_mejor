@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, Rss, Twitter, Sun, Moon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 export default function AboutPage() {
   const router = useRouter()
@@ -15,39 +16,43 @@ export default function AboutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="container mx-auto py-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tighter">
-            Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+          <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <Image src="/images/logo-fundacion-header.png" alt="Fundación Vivir Mejor Logo" width={32} height={32} />
+            Fundación Vivir<span className="text-primary">Mejor</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
               Inicio
             </Link>
-            <Link href="/articles/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/articles/" className="text-muted-foreground hover:text-foreground transition-colors">
               Eventos
             </Link>
-            <Link href="/topics/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/topics/" className="text-muted-foreground hover:text-foreground transition-colors">
               Logros
             </Link>
-            <Link href="/about/" className="text-white transition-colors border-b-2 border-[rgba(44,190,234,1)] pb-1">
+            <Link href="/about/" className="text-foreground transition-colors border-b-2 border-primary pb-1">
               {"Nosotros"}
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
-              className="border-sky-500 text-cyan-500 hover:bg-purple-950 hover:text-white bg-transparent"
+              className="border-primary text-primary hover:bg-primary/10 hover:text-primary bg-transparent"
               onClick={handleSubscribeClick}
             >
               Contactanos
+            </Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+              <Link href="/donate">Donar</Link>
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-gray-400 hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               <span className="sr-only">Toggle theme</span>
@@ -60,8 +65,8 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">Sobre Fundación Vivir Mejor</h1>
 
-          <div className="prose prose-invert prose-purple max-w-none">
-            <p className="text-xl text-gray-300 mb-8">
+          <div className="prose prose-invert max-w-none">
+            <p className="text-xl text-muted-foreground mb-8">
               Fundación Vivir Mejor está comprometida con la mejora de la calidad de vida en nuestra comunidad,
               enfocándonos en la salud, el bienestar social y el desarrollo comunitario.
             </p>
@@ -103,7 +108,7 @@ export default function AboutPage() {
             <h2>Contáctanos</h2>
             <p>
               ¿Tienes alguna pregunta, sugerencia o deseas colaborar? ¡Nos encantaría escucharte! Contáctanos en{" "}
-              <a href="mailto:Fundacionvivirmejor7@gmail.com" className="text-[rgba(44,190,234,1)] hover:text-cyan-300">
+              <a href="mailto:Fundacionvivirmejor7@gmail.com" className="text-primary hover:text-primary/90">
                 Fundacionvivirmejor7@gmail.com
               </a>{" "}
               o al teléfono 3013565386. Nuestra dirección es Calle 17AN #18E-61, Barrio Niza, San José de Cúcuta (N.S).
@@ -112,54 +117,62 @@ export default function AboutPage() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-800 py-12">
+      <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="text-xl font-bold tracking-tighter">
-                Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+              <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+                <Image
+                  src="/images/logo-fundacion-header.png"
+                  alt="Fundación Vivir Mejor Logo"
+                  width={24}
+                  height={24}
+                />
+                Fundación Vivir<span className="text-primary">Mejor</span>
               </Link>
-              <p className="text-gray-400 text-sm">Comprometidos con el bienestar y desarrollo de nuestra comunidad.</p>
+              <p className="text-muted-foreground text-sm">
+                Comprometidos con el bienestar y desarrollo de nuestra comunidad.
+              </p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Twitter className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Github className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Linkedin className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Rss className="h-5 w-5" />
                 </Link>
               </div>
             </div>
             <div>
               <h3 className="font-medium mb-4">Temas</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Salud
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Bienestar Social
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Educación
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Ayuda Humanitaria
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Proyectos Comunitarios
                   </Link>
                 </li>
@@ -167,29 +180,29 @@ export default function AboutPage() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Recursos</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Testimonios
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Informes
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Noticias
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Galería
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Preguntas Frecuentes
                   </Link>
                 </li>
@@ -197,7 +210,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Contacto</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
                   <span>Fundacionvivirmejor7@gmail.com</span>
@@ -214,7 +227,7 @@ export default function AboutPage() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
+          <div className="border-t border-border mt-12 pt-6 text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Fundación Vivir Mejor. Todos los derechos reservados.</p>
           </div>
         </div>

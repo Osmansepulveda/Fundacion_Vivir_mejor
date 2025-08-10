@@ -52,39 +52,43 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="container mx-auto py-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tighter">
-            Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+          <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <Image src="/images/logo-fundacion-header.png" alt="Fundación Vivir Mejor Logo" width={32} height={32} />
+            Fundación Vivir<span className="text-primary">Mejor</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
               Inicio
             </Link>
-            <Link href="/articles/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/articles/" className="text-muted-foreground hover:text-foreground transition-colors">
               Eventos
             </Link>
-            <Link href="/topics/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/topics/" className="text-muted-foreground hover:text-foreground transition-colors">
               Logros
             </Link>
-            <Link href="/about/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/about/" className="text-muted-foreground hover:text-foreground transition-colors">
               Nosotros
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
-              className="hover:bg-purple-950 hover:text-white text-cyan-500 border-sky-500 bg-transparent"
+              className="border-primary text-primary hover:bg-primary/10 hover:text-primary bg-transparent"
               onClick={scrollToNewsletter}
             >
               {"Contactanos"}
+            </Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+              <Link href="/donate">Donar</Link>
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-gray-400 hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               <span className="sr-only">Toggle theme</span>
@@ -98,27 +102,26 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Transformando Vidas a Través de la Salud y el Apoyo a la{" "}
-                <span className="text-[rgba(44,190,234,1)]">Comunidad</span>
+                Transformando Vidas a Través de la Salud y el Apoyo a la <span className="text-primary">Comunidad</span>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl">
+              <p className="text-muted-foreground text-lg md:text-xl">
                 Nuestra fundación se dedica a mejorar la calidad de vida ofreciendo servicios médicos y asistencia
                 integral.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-[rgba(44,190,234,1)] hover:bg-cyan-600">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
                   <Link href="/articles/">Nuestros Eventos</Link>
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-gray-700 hover:bg-gray-900 bg-transparent"
+                  className="border-border hover:bg-accent hover:text-accent-foreground bg-transparent"
                   onClick={scrollToNewsletter}
                 >
                   Contactanos
                 </Button>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden border border-gray-800">
+            <div className="relative h-[400px] rounded-xl overflow-hidden border border-border">
               <Image
                 src="/images/fundacion2.jpeg"
                 alt="Community outreach and medical assistance"
@@ -126,7 +129,7 @@ export default function Home() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
             </div>
           </div>
         </section>
@@ -134,10 +137,7 @@ export default function Home() {
         <section className="mb-20">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold">Eventos Destacados</h2>
-            <Link
-              href="/articles/"
-              className="text-[rgba(44,190,234,1)] hover:text-cyan-400 text-sm flex items-center gap-2"
-            >
+            <Link href="/articles/" className="text-primary hover:text-primary/90 text-sm flex items-center gap-2">
               Ver todos <Eye className="h-4 w-4" />
             </Link>
           </div>
@@ -227,11 +227,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section ref={newsletterRef} id="newsletter" className="bg-gray-900 rounded-xl p-8 mb-20">
+        <section ref={newsletterRef} id="newsletter" className="bg-card rounded-xl p-8 mb-20">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Mantente Conectado</h2>
-              <p className="text-gray-400">
+              <p className="text-muted-foreground">
                 Suscríbete a nuestro boletín para recibir las últimas noticias sobre nuestros eventos, logros y formas
                 de apoyar.
               </p>
@@ -240,14 +240,14 @@ export default function Home() {
               <Input
                 type="email"
                 placeholder="Ingresa tu correo"
-                className="bg-black border-gray-800 focus-visible:ring-[rgba(44,190,234,1)]"
+                className="bg-background border-input focus-visible:ring-ring"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <Button
                 type="submit"
-                className="hover:bg-cyan-600 whitespace-nowrap bg-[rgba(44,190,234,1)]"
+                className="hover:bg-primary/90 whitespace-nowrap bg-primary text-primary-foreground"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Suscribiendo..." : "Suscribirme"}
@@ -257,54 +257,62 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-gray-800 py-12">
+      <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="text-xl font-bold tracking-tighter">
-                Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+              <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+                <Image
+                  src="/images/logo-fundacion-header.png"
+                  alt="Fundación Vivir Mejor Logo"
+                  width={24}
+                  height={24}
+                />
+                Fundación Vivir<span className="text-primary">Mejor</span>
               </Link>
-              <p className="text-gray-400 text-sm">Comprometidos con el bienestar y desarrollo de nuestra comunidad.</p>
+              <p className="text-muted-foreground text-sm">
+                Comprometidos con el bienestar y desarrollo de nuestra comunidad.
+              </p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Twitter className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Github className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Linkedin className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Rss className="h-5 w-5" />
                 </Link>
               </div>
             </div>
             <div>
               <h3 className="font-medium mb-4">Temas</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Salud
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Bienestar Social
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Educación
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Ayuda Humanitaria
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Proyectos Comunitarios
                   </Link>
                 </li>
@@ -312,29 +320,29 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Recursos</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Testimonios
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Informes
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Noticias
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Galería
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Preguntas Frecuentes
                   </Link>
                 </li>
@@ -342,7 +350,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Contacto</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
                   <span>Fundacionvivirmejor7@gmail.com</span>
@@ -359,7 +367,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
+          <div className="border-t border-border mt-12 pt-6 text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Fundación Vivir Mejor. Todos los derechos reservados.</p>
           </div>
         </div>
@@ -370,26 +378,26 @@ export default function Home() {
 
 function FeaturedCard({ title, description, image, date, category, icon, slug = "" }) {
   return (
-    <Card className="bg-gray-900 border-gray-800 overflow-hidden hover:border-[rgba(44,190,234,1)]/50 transition-colors">
+    <Card className="bg-card border-border overflow-hidden hover:border-primary/50 transition-colors">
       <div className="relative h-48">
         <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
       </div>
       <CardHeader>
-        <div className="flex items-center gap-2 text-sm text-[rgba(44,190,234,1)] mb-2">
+        <div className="flex items-center gap-2 text-sm text-primary mb-2">
           {icon}
           <span>{category}</span>
         </div>
         <CardTitle className="text-xl">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <CardDescription className="text-gray-400">{description}</CardDescription>
+        <CardDescription className="text-muted-foreground">{description}</CardDescription>
       </CardContent>
-      <CardFooter className="flex justify-between text-sm text-gray-500">
+      <CardFooter className="flex justify-between text-sm text-muted-foreground">
         <div className="flex items-center gap-1">
           <Clock className="h-4 w-4" />
           <span>{date}</span>
         </div>
-        <Link href={`/blog/${slug}/`} className="text-[rgba(44,190,234,1)] hover:text-cyan-400">
+        <Link href={`/blog/${slug}/`} className="text-primary hover:text-primary/90">
           Read more →
         </Link>
       </CardFooter>

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { BrainCircuit, Cpu, Eye, Github, Linkedin, Mail, Rss, Twitter, Sun, Moon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 // Update topics data to represent "Logros" (Achievements)
 const topics = [
@@ -62,39 +63,43 @@ export default function TopicsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="container mx-auto py-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tighter">
-            Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+          <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <Image src="/images/logo-fundacion-header.png" alt="Fundación Vivir Mejor Logo" width={32} height={32} />
+            Fundación Vivir<span className="text-primary">Mejor</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
               Inicio
             </Link>
-            <Link href="/articles/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/articles/" className="text-muted-foreground hover:text-foreground transition-colors">
               {"Eventos"}
             </Link>
-            <Link href="/topics/" className="text-white transition-colors border-b-2 border-[rgba(44,190,234,1)] pb-1">
+            <Link href="/topics/" className="text-foreground transition-colors border-b-2 border-primary pb-1">
               {"Logros"}
             </Link>
-            <Link href="/about/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/about/" className="text-muted-foreground hover:text-foreground transition-colors">
               Nosotros
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
-              className="border-sky-500 text-cyan-500 hover:bg-purple-950 hover:text-white bg-transparent"
+              className="border-primary text-primary hover:bg-primary/10 hover:text-primary bg-transparent"
               onClick={handleSubscribeClick}
             >
               Contactanos
+            </Button>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+              <Link href="/donate">Donar</Link>
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-gray-400 hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               <span className="sr-only">Toggle theme</span>
@@ -122,54 +127,62 @@ export default function TopicsPage() {
         </section>
       </main>
 
-      <footer className="border-t border-gray-800 py-12">
+      <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Link href="/" className="text-xl font-bold tracking-tighter">
-                Fundación Vivir<span className="text-[rgba(44,190,234,1)]">Mejor</span>
+              <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
+                <Image
+                  src="/images/logo-fundacion-header.png"
+                  alt="Fundación Vivir Mejor Logo"
+                  width={24}
+                  height={24}
+                />
+                Fundación Vivir<span className="text-primary">Mejor</span>
               </Link>
-              <p className="text-gray-400 text-sm">Comprometidos con el bienestar y desarrollo de nuestra comunidad.</p>
+              <p className="text-muted-foreground text-sm">
+                Comprometidos con el bienestar y desarrollo de nuestra comunidad.
+              </p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Twitter className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Github className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Linkedin className="h-5 w-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-muted-foreground hover:text-foreground">
                   <Rss className="h-5 w-5" />
                 </Link>
               </div>
             </div>
             <div>
               <h3 className="font-medium mb-4">Temas</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Salud
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Bienestar Social
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Educación
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Ayuda Humanitaria
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Proyectos Comunitarios
                   </Link>
                 </li>
@@ -177,29 +190,29 @@ export default function TopicsPage() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Recursos</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Testimonios
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Informes
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Noticias
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Galería
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white">
+                  <Link href="#" className="hover:text-foreground">
                     Preguntas Frecuentes
                   </Link>
                 </li>
@@ -207,7 +220,7 @@ export default function TopicsPage() {
             </div>
             <div>
               <h3 className="font-medium mb-4">Contacto</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
                   <span>Fundacionvivirmejor7@gmail.com</span>
@@ -224,7 +237,7 @@ export default function TopicsPage() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-6 text-sm text-gray-400">
+          <div className="border-t border-border mt-12 pt-6 text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} Fundación Vivir Mejor. Todos los derechos reservados.</p>
           </div>
         </div>
@@ -236,21 +249,19 @@ export default function TopicsPage() {
 function TopicCard({ title, description, icon, count, slug = "" }) {
   return (
     <Link href={`/articles/`} className="group">
-      <Card className="bg-gray-900 border-gray-800 hover:border-[rgba(44,190,234,1)]/50 transition-colors h-full">
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors h-full">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <div className="bg-[rgba(44,190,234,1)]/10 p-3 rounded-lg text-[rgba(44,190,234,1)]">{icon}</div>
-            <div className="bg-gray-800 px-3 py-1 rounded-full text-sm">{count} artículos</div>
+            <div className="bg-primary/10 p-3 rounded-lg text-primary">{icon}</div>
+            <div className="bg-muted px-3 py-1 rounded-full text-sm text-muted-foreground">{count} artículos</div>
           </div>
-          <CardTitle className="text-xl mt-4 group-hover:text-[rgba(44,190,234,1)] transition-colors">
-            {title}
-          </CardTitle>
+          <CardTitle className="text-xl mt-4 group-hover:text-primary transition-colors">{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <CardDescription className="text-gray-400">{description}</CardDescription>
+          <CardDescription className="text-muted-foreground">{description}</CardDescription>
         </CardContent>
         <CardFooter>
-          <span className="text-[rgba(44,190,234,1)] text-sm group-hover:text-cyan-400">Ver artículos →</span>
+          <span className="text-primary text-sm group-hover:text-primary/90">Ver artículos →</span>
         </CardFooter>
       </Card>
     </Link>
