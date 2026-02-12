@@ -86,7 +86,7 @@ export default function DonatePage() {
                   >
                     <CardContent className="flex flex-col items-center justify-center p-6">
                       <span className="text-2xl font-bold text-primary mb-2">
-                        {"$"}{(product.priceInCents / 100).toFixed(2)} USD
+                        {product.displayPrice} COP
                       </span>
                       <span className="text-sm text-muted-foreground text-center">{product.description}</span>
                       <Button className="mt-4 w-full bg-primary hover:bg-primary/90 text-primary-foreground">
@@ -102,7 +102,7 @@ export default function DonatePage() {
                   <div>
                     <span className="text-sm text-muted-foreground">Monto seleccionado:</span>
                     <span className="ml-2 font-bold text-primary">
-                      {"$"}{((PRODUCTS.find(p => p.id === selectedProductId)?.priceInCents || 0) / 100).toFixed(2)} USD
+                      {PRODUCTS.find(p => p.id === selectedProductId)?.displayPrice} COP
                     </span>
                   </div>
                   <Button
@@ -114,7 +114,7 @@ export default function DonatePage() {
                     Cambiar monto
                   </Button>
                 </div>
-                <div className="bg-card border border-border rounded-lg p-4">
+                <div className="bg-card border border-border rounded-lg p-6 min-h-[400px]">
                   <Checkout productId={selectedProductId} />
                 </div>
               </div>

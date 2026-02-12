@@ -3,31 +3,36 @@ export interface Product {
   name: string
   description: string
   priceInCents: number
+  displayPrice: string
 }
 
 export const PRODUCTS: Product[] = [
   {
     id: "donacion-10000",
     name: "Donacion $10.000 COP",
-    description: "Donacion de $10.000 COP para la Fundacion Vivir Mejor",
-    priceInCents: 1000,
+    description: "Ayuda basica para una familia",
+    priceInCents: 1000000,
+    displayPrice: "$10.000",
   },
   {
     id: "donacion-25000",
     name: "Donacion $25.000 COP",
-    description: "Donacion de $25.000 COP para la Fundacion Vivir Mejor",
-    priceInCents: 2500,
+    description: "Kit de medicamentos esenciales",
+    priceInCents: 2500000,
+    displayPrice: "$25.000",
   },
   {
     id: "donacion-50000",
     name: "Donacion $50.000 COP",
-    description: "Donacion de $50.000 COP para la Fundacion Vivir Mejor",
-    priceInCents: 5000,
+    description: "Jornada de salud comunitaria",
+    priceInCents: 5000000,
+    displayPrice: "$50.000",
   },
   {
     id: "donacion-100000",
     name: "Donacion $100.000 COP",
-    description: "Donacion de $100.000 COP para la Fundacion Vivir Mejor",
-    priceInCents: 10000,
+    description: "Programa completo de atencion",
+    priceInCents: 10000000,
+    displayPrice: "$100.000",
   },
 ]

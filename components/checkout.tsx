@@ -9,16 +9,19 @@ import { startCheckoutSession } from "@/app/actions/stripe"
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
 export default function Checkout({ productId }: { productId: string }) {
-  const startCheckoutSessionForProduct = useCallback(
-    () => startCheckoutSession(productId),
-    [productId]
-  )
+  const fetchClientSecret = useCallback(async () => {
+    const clientSecret = await startCheckoutSession(productId)
+    if (!clientSecret) {
+      throw new Error("No se pudo iniciar la sesion de pago")
+    }
+    return clientSecret
+  }, [productId])
 
   return (
     <div id="checkout">
       <EmbeddedCheckoutProvider
         stripe={stripePromise}
-        options={{ clientSecret: startCheckoutSessionForProduct }}
+        options={{ fetchClientSecret }}
       >
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>
