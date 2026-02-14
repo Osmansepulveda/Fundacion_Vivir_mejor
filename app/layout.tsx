@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/logo-fundacion.png", // Set favicon
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

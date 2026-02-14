@@ -1,23 +1,27 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, Banknote, CreditCard, ArrowLeft, Twitter, Facebook, Linkedin } from "lucide-react"
+import { Phone, Banknote, CreditCard, ArrowLeft, Twitter, Facebook, Linkedin, ShieldCheck, Heart } from "lucide-react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { Sun, Moon } from "lucide-react"
+import Checkout from "@/components/checkout"
+import { PRODUCTS } from "@/lib/products"
 
 export default function DonatePage() {
   const { theme, setTheme } = useTheme()
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="container mx-auto py-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold tracking-tighter flex items-center gap-2">
-            <Image src="/images/logo-fundacion-header.png" alt="Fundación Vivir Mejor Logo" width={32} height={32} />
-            Fundación Vivir<span className="text-primary">Mejor</span>
+            <Image src="/images/logo-fundacion-header.png" alt="Fundacion Vivir Mejor Logo" width={32} height={32} />
+            {"Fundacion Vivir"}<span className="text-primary">{"Mejor"}</span>
           </Link>
           <div className="flex items-center gap-4">
             <Button
@@ -44,33 +48,110 @@ export default function DonatePage() {
       </header>
 
       <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <Link href="/" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Volver al Inicio
           </Link>
 
-          <h1 className="text-4xl font-bold mb-6 text-center">Apoya Nuestra Causa</h1>
-          <p className="text-lg text-muted-foreground mb-10 text-center">
-            Tu contribución es vital para que podamos seguir transformando vidas a través de nuestros programas de salud
-            y apoyo comunitario. ¡Cada donación cuenta!
-          </p>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+              <Heart className="h-8 w-8 text-primary" />
+            </div>
+            <h1 className="text-4xl font-bold mb-4 text-balance">Apoya Nuestra Causa</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+              Tu contribucion es vital para que podamos seguir transformando vidas a traves de nuestros programas de salud
+              y apoyo comunitario. Cada donacion cuenta.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Stripe Secure Payment Section */}
+          <section className="mb-12">
+            <div className="flex items-center gap-2 mb-6">
+              <ShieldCheck className="h-6 w-6 text-primary" />
+              <h2 className="text-2xl font-bold">Pago Seguro con Tarjeta</h2>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              Selecciona un monto y realiza tu donacion de forma segura. Tus datos de tarjeta estan protegidos por Stripe
+              y nunca son almacenados en nuestros servidores.
+            </p>
+
+            {!selectedProductId ? (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                {PRODUCTS.map((product) => (
+                  <Card
+                    key={product.id}
+                    className="bg-card border-border hover:border-primary/50 transition-colors cursor-pointer"
+                    onClick={() => setSelectedProductId(product.id)}
+                  >
+                    <CardContent className="flex flex-col items-center justify-center p-6">
+                      <span className="text-2xl font-bold text-primary mb-2">
+                        {product.displayPrice} COP
+                      </span>
+                      <span className="text-sm text-muted-foreground text-center">{product.description}</span>
+                      <Button className="mt-4 w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                        Seleccionar
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between bg-card border border-border rounded-lg p-4">
+                  <div>
+                    <span className="text-sm text-muted-foreground">Monto seleccionado:</span>
+                    <span className="ml-2 font-bold text-primary">
+                      {PRODUCTS.find(p => p.id === selectedProductId)?.displayPrice} COP
+                    </span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-border text-muted-foreground hover:text-foreground"
+                    onClick={() => setSelectedProductId(null)}
+                  >
+                    Cambiar monto
+                  </Button>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6 min-h-[400px]">
+                  <Checkout productId={selectedProductId} />
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-center gap-2 mt-4 text-sm text-muted-foreground">
+              <ShieldCheck className="h-4 w-4" />
+              <span>Pagos procesados de forma segura por Stripe. No almacenamos datos de tarjetas.</span>
+            </div>
+          </section>
+
+          {/* Divider */}
+          <div className="relative my-12">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-background px-4 text-muted-foreground">Otros metodos de pago</span>
+            </div>
+          </div>
+
+          {/* Other Payment Methods */}
+          <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Banknote className="h-6 w-6 text-primary" />
-                  Donar con PayPal
+                  PayPal
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Realiza tu donación de forma rápida y segura a través de PayPal.
+                  Realiza tu donacion de forma rapida y segura a traves de PayPal.
                 </p>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
                   <a
-                    href="https://www.paypal.com/paypalme/YPradaDiaz"
+                    href="https://paypal.me/OsmanR267?locale.x=es_XC&country.x=CO"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -84,16 +165,16 @@ export default function DonatePage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Phone className="h-6 w-6 text-primary" />
-                  Donar con Nequi
+                  Nequi
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground">Puedes enviar tu donación directamente a nuestra cuenta Nequi.</p>
+                <p className="text-muted-foreground">Envia tu donacion directamente a nuestra cuenta Nequi.</p>
                 <div className="text-foreground font-semibold text-lg">
-                  Número Nequi: <span className="text-primary">3014071578</span>
+                  {"Numero: "}<span className="text-primary">3176639002</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Abre tu aplicación Nequi, selecciona "Enviar", ingresa el número y el monto.
+                  Abre tu aplicacion Nequi, selecciona Enviar, ingresa el numero y el monto.
                 </p>
               </CardContent>
             </Card>
@@ -102,54 +183,33 @@ export default function DonatePage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <CreditCard className="h-6 w-6 text-primary" />
-                  Transferencia Bancaria (Davivienda)
+                  Transferencia Bancaria
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Realiza una transferencia directa a nuestra cuenta de ahorros en Davivienda.
+                  Transferencia directa a nuestra cuenta de ahorros en Davivienda.
                 </p>
-                <div className="text-foreground font-semibold text-lg">
-                  Banco: <span className="text-primary">Davivienda</span>
+                <div className="space-y-1">
+                  <div className="text-foreground text-sm">
+                    {"Banco: "}<span className="font-semibold text-primary">Davivienda</span>
+                  </div>
+                  <div className="text-foreground text-sm">
+                    {"Tipo: "}<span className="font-semibold text-primary">Cuenta de Ahorros</span>
+                  </div>
+                  <div className="text-foreground text-sm">
+                    {"No. Cuenta: "}<span className="font-semibold text-primary">4884 3366 2175</span>
+                  </div>
                 </div>
-                <div className="text-foreground font-semibold text-lg">
-                  Tipo de Cuenta: <span className="text-primary">Ahorros</span>
-                </div>
-                <div className="text-foreground font-semibold text-lg">
-                  Número de Cuenta: <span className="text-primary">4884 3366 2175</span>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Por favor, incluye tu nombre en la referencia si deseas un recibo.
+                <p className="text-xs text-muted-foreground">
+                  Incluye tu nombre en la referencia si deseas un recibo.
                 </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Banknote className="h-6 w-6 text-primary" />
-                  Donar con PSE
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">
-                  Para donaciones a través de PSE, estamos trabajando en la integración con una pasarela de pagos
-                  segura.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Actualmente, la integración directa de PSE requiere una pasarela de pagos (como PayU, Epayco, etc.)
-                  que maneje la transacción de forma segura. Para una implementación completa, se necesitaría un backend
-                  y credenciales de API de una de estas pasarelas.
-                </p>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled>
-                  Próximamente: Donar con PSE
-                </Button>
               </CardContent>
             </Card>
           </div>
 
           <p className="text-center text-muted-foreground mt-12">
-            ¡Gracias por tu generosidad y por apoyar a Fundación Vivir Mejor!
+            {"Gracias por tu generosidad y por apoyar a Fundacion Vivir Mejor."}
           </p>
         </div>
       </main>
@@ -158,8 +218,8 @@ export default function DonatePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <Link href="/" className="text-xl font-bold tracking-tighter flex items-center justify-center gap-2">
-              <Image src="/images/logo-fundacion-header.png" alt="Fundación Vivir Mejor Logo" width={24} height={24} />
-              Fundación Vivir<span className="text-primary">Mejor</span>
+              <Image src="/images/logo-fundacion-header.png" alt="Fundacion Vivir Mejor Logo" width={24} height={24} />
+              {"Fundacion Vivir"}<span className="text-primary">{"Mejor"}</span>
             </Link>
             <p className="text-muted-foreground text-sm mt-4 mb-6">
               Comprometidos con el bienestar y desarrollo de nuestra comunidad.
@@ -176,7 +236,7 @@ export default function DonatePage() {
               </Link>
             </div>
             <div className="border-t border-border mt-8 pt-6 text-sm text-muted-foreground">
-              <p>© {new Date().getFullYear()} Fundación Vivir Mejor. Todos los derechos reservados.</p>
+              <p>{"(c) "}{new Date().getFullYear()}{" Fundacion Vivir Mejor. Todos los derechos reservados."}</p>
             </div>
           </div>
         </div>
