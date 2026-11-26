@@ -98,7 +98,8 @@ export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="text-muted-foreground hover:text-foreground"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <Sun className="hidden h-5 w-5 dark:block" />
+              <Moon className="h-5 w-5 dark:hidden" />
               <span className="sr-only">Toggle theme</span>
             </Button>
           </div>
@@ -178,8 +179,8 @@ export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }
             </Button>
           </div>
 
-          <article className="prose prose-invert max-w-none">
-            <div className="text-slate-600" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <article className="prose dark:prose-invert max-w-none">
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
 
           <div className="border-t border-border mt-12 pt-8">
