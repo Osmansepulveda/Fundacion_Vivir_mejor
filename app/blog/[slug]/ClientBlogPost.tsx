@@ -5,37 +5,11 @@ import Image from "next/image"
 import { ArrowLeft, BrainCircuit, Clock, Share2, Twitter, Facebook, Linkedin, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
-import { useEffect } from "react"
 import { useTheme } from "next-themes"
 
-export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }; blogPosts: any }) {
+export function ClientBlogPost({ post }: { post: any }) {
   const { toast } = useToast()
-  const post = blogPosts[params.slug]
   const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    if (!post) {
-      toast({
-        title: "Publicación no encontrada",
-        description: "La publicación de blog solicitada no pudo ser encontrada.",
-        variant: "destructive",
-      })
-    }
-  }, [post, toast])
-
-  if (!post) {
-    return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Publicación no encontrada</h1>
-          <p className="mb-6">La publicación de blog que buscas no existe o ha sido movida.</p>
-          <Button asChild>
-            <Link href="/">Volver al Inicio</Link>
-          </Button>
-        </div>
-      </div>
-    )
-  }
 
   const handleShare = (platform: string) => {
     const url = window.location.href
