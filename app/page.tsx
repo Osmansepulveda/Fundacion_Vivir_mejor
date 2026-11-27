@@ -27,8 +27,8 @@ export default function Home() {
 
     if (!email || !email.includes("@")) {
       toast({
-        title: "Invalid email",
-        description: "Please enter a valid email address.",
+        title: "Correo inválido",
+        description: "Por favor, ingresa un correo electrónico válido.",
         variant: "destructive",
       })
       return
@@ -39,8 +39,8 @@ export default function Home() {
     // Simulate subscription process
     setTimeout(() => {
       toast({
-        title: "Subscription successful!",
-        description: "Thank you for subscribing to our newsletter.",
+        title: "¡Suscripción exitosa!",
+        description: "Gracias por suscribirte a nuestro boletín.",
       })
       setEmail("")
       setIsSubmitting(false)
@@ -91,7 +91,7 @@ export default function Home() {
               className="text-muted-foreground hover:text-foreground"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">Cambiar tema</span>
             </Button>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function Home() {
             <div className="relative h-[400px] rounded-xl overflow-hidden border border-border">
               <Image
                 src="/images/fundacion2.jpeg"
-                alt="Community outreach and medical assistance"
+                alt="Atención comunitaria y asistencia médica"
                 fill
                 className="object-cover"
                 priority
@@ -398,7 +398,7 @@ function FeaturedCard({ title, description, image, date, category, icon, slug = 
           <span>{date}</span>
         </div>
         <Link href={`/blog/${slug}/`} className="text-primary hover:text-primary/90">
-          Read more →
+          Leer más →
         </Link>
       </CardFooter>
     </Card>

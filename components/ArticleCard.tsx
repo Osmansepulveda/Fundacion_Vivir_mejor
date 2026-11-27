@@ -7,7 +7,7 @@ export default function ArticleCard({ title, description, category, date, slug =
     <Link href={`/blog/${slug}/`} className="group">
       <div className="space-y-3">
         <div className="relative h-48 rounded-lg overflow-hidden border border-border group-hover:border-primary/50 transition-colors">
-          <Image src={image || "/placeholder.svg"} alt={`${title} thumbnail`} fill className="object-cover" />
+          <Image src={image || "/placeholder.svg"} alt={`Miniatura de ${title}`} fill className="object-cover" />
         </div>
         <div>
           <div className="flex items-center gap-2 text-xs text-primary mb-2">
