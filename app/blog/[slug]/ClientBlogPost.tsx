@@ -5,37 +5,11 @@ import Image from "next/image"
 import { ArrowLeft, BrainCircuit, Clock, Share2, Twitter, Facebook, Linkedin, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
-import { useEffect } from "react"
 import { useTheme } from "next-themes"
 
-export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }; blogPosts: any }) {
+export function ClientBlogPost({ post }: { post: any }) {
   const { toast } = useToast()
-  const post = blogPosts[params.slug]
   const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    if (!post) {
-      toast({
-        title: "Publicación no encontrada",
-        description: "La publicación de blog solicitada no pudo ser encontrada.",
-        variant: "destructive",
-      })
-    }
-  }, [post, toast])
-
-  if (!post) {
-    return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Publicación no encontrada</h1>
-          <p className="mb-6">La publicación de blog que buscas no existe o ha sido movida.</p>
-          <Button asChild>
-            <Link href="/">Volver al Inicio</Link>
-          </Button>
-        </div>
-      </div>
-    )
-  }
 
   const handleShare = (platform: string) => {
     const url = window.location.href
@@ -98,7 +72,8 @@ export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="text-muted-foreground hover:text-foreground"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <Sun className="hidden h-5 w-5 dark:block" />
+              <Moon className="h-5 w-5 dark:hidden" />
               <span className="sr-only">Toggle theme</span>
             </Button>
           </div>
@@ -178,8 +153,8 @@ export function ClientBlogPost({ params, blogPosts }: { params: { slug: string }
             </Button>
           </div>
 
-          <article className="prose prose-invert max-w-none">
-            <div className="text-slate-600" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <article className="prose dark:prose-invert max-w-none">
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
 
           <div className="border-t border-border mt-12 pt-8">

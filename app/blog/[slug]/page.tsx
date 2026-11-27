@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation"
 import { ClientBlogPost } from "./ClientBlogPost"
 
 // This is a static mapping of blog posts for GitHub Pages
@@ -360,5 +361,11 @@ export async function generateStaticParams() {
 }
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
-  return <ClientBlogPost params={params} blogPosts={blogPosts} />
+  if (!Object.hasOwn(blogPosts, params.slug)) {
+    notFound()
+  }
+
+  const post = blogPosts[params.slug as keyof typeof blogPosts]
+
+  return <ClientBlogPost post={post} />
 }
