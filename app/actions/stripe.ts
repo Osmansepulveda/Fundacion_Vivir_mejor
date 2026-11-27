@@ -26,6 +26,7 @@ export async function startCheckoutSession(productId: string): Promise<string> {
       },
     ],
     mode: "payment",
+    locale: "es-419",
   })
 
   if (!session.client_secret) {

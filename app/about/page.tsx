@@ -55,7 +55,7 @@ export default function AboutPage() {
               className="text-muted-foreground hover:text-foreground"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">Cambiar tema</span>
             </Button>
           </div>
         </div>

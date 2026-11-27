@@ -74,7 +74,7 @@ export function ClientBlogPost({ post }: { post: any }) {
             >
               <Sun className="hidden h-5 w-5 dark:block" />
               <Moon className="h-5 w-5 dark:hidden" />
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">Cambiar tema</span>
             </Button>
           </div>
         </div>

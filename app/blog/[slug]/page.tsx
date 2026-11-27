@@ -8,7 +8,7 @@ const blogPosts = {
     date: "15 de Mayo, 2024",
     author: "Equipo Médico FVM",
     category: "Salud Comunitaria",
-    readTime: "5 min read",
+    readTime: "5 min de lectura",
     image: "/images/fundacion1.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor llevó a cabo una exitosa jornada de salud comunitaria en el Barrio Niza, beneficiando a cientos de residentes con servicios médicos esenciales. Nuestro equipo de profesionales de la salud, incluyendo médicos generales y ginecólogos, trabajó arduamente para ofrecer atención de calidad a todos los asistentes.</p>
@@ -48,7 +48,7 @@ const blogPosts = {
     date: "2 de Junio, 2024",
     author: "Equipo de Prevención FVM",
     category: "Prevención",
-    readTime: "6 min read",
+    readTime: "6 min de lectura",
     image: "/images/fundacion2.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor se compromete activamente en campañas de detección temprana y prevención de enfermedades. Creemos firmemente que la información y el acceso a exámenes oportunos son clave para mantener una comunidad sana y reducir la incidencia de enfermedades crónicas.</p>
@@ -87,7 +87,7 @@ const blogPosts = {
     date: "28 de Junio, 2024",
     author: "Departamento de Bienestar FVM",
     category: "Bienestar",
-    readTime: "7 min read",
+    readTime: "7 min de lectura",
     image: "/images/fundacion3.jpeg", // Corrected path
     content: `
       <p>En Fundación Vivir Mejor, entendemos que la salud mental y emocional es tan crucial como la física. Por ello, ofrecemos servicios de asesoría psicológica para apoyar a individuos y familias en el manejo de desafíos emocionales y en el fortalecimiento de su bienestar integral.</p>
@@ -123,7 +123,7 @@ const blogPosts = {
     date: "5 de Julio, 2024",
     author: "Brigada de Salud FVM",
     category: "Salud Rural",
-    readTime: "5 min read",
+    readTime: "5 min de lectura",
     image: "/images/fundacion4.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor se enorgullece de llevar servicios de salud esenciales a las zonas rurales, donde el acceso a la atención médica es limitado. Nuestras brigadas de salud visitan regularmente estas comunidades para ofrecer consultas, exámenes y medicamentos.</p>
@@ -164,7 +164,7 @@ const blogPosts = {
     date: "18 de Julio, 2024",
     author: "Especialistas FVM",
     category: "Nutrición",
-    readTime: "4 min read",
+    readTime: "4 min de lectura",
     image: "/images/fundacion5.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor organiza talleres de nutrición y vida saludable con el objetivo de empoderar a la comunidad con conocimientos prácticos para mejorar sus hábitos alimenticios y fomentar un estilo de vida activo.</p>
@@ -204,7 +204,7 @@ const blogPosts = {
     date: "3 de Agosto, 2024",
     author: "Equipo de Psicología Infantil FVM",
     category: "Infancia y Juventud",
-    readTime: "6 min read",
+    readTime: "6 min de lectura",
     image: "/images/fundacion6.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor se preocupa por el desarrollo integral de los niños y jóvenes, ofreciendo programas de apoyo psicosocial que fomentan su bienestar emocional, social y cognitivo. Creemos que una infancia feliz y saludable es la base para un futuro prometedor.</p>
@@ -244,7 +244,7 @@ const blogPosts = {
     date: "15 de Agosto, 2024",
     author: "Equipo de Salud Pública FVM",
     category: "Vacunación",
-    readTime: "5 min read",
+    readTime: "5 min de lectura",
     image: "/images/fundacion7.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor lleva a cabo campañas de vacunación masivas y control de enfermedades para proteger a nuestra comunidad contra diversas afecciones. La vacunación es una herramienta fundamental en la salud pública y nuestro compromiso es asegurar que todos tengan acceso a ella.</p>
@@ -279,7 +279,7 @@ const blogPosts = {
     date: "2 de Septiembre, 2024",
     author: "Departamento de Ayuda Social FVM",
     category: "Ayuda Humanitaria",
-    readTime: "4 min read",
+    readTime: "4 min de lectura",
     image: "/images/fundacion8.jpeg", // Corrected path
     content: `
       <p>En Fundación Vivir Mejor, extendemos nuestra mano amiga a las familias más necesitadas a través de la distribución de kits de higiene y suministros médicos esenciales. Esta iniciativa es crucial para promover la salud básica y prevenir enfermedades, especialmente en contextos de vulnerabilidad.</p>
@@ -314,7 +314,7 @@ const blogPosts = {
     date: "20 de Septiembre, 2024",
     author: "Instructor de Salud FVM",
     category: "Capacitación",
-    readTime: "7 min read",
+    readTime: "7 min de lectura",
     image: "/images/fundacion10.jpeg", // Corrected path
     content: `
       <p>La Fundación Vivir Mejor ofrece programas de formación en primeros auxilios dirigidos a líderes comunitarios y al público en general. Creemos que capacitar a las personas con habilidades básicas de primeros auxilios puede marcar una diferencia crucial en situaciones de emergencia y salvar vidas.</p>
